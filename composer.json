@@ -62,5 +62,14 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "enrise/laravel-sonar": {
+            "type": "path",
+            "url": "/Users/sjoerdvanhout/Development/DlfHackaton/sonar-app/packages/enrise/laravel-sonar",
+            "options": {
+                "symlink": true
+            }
+        }
+    }
 }

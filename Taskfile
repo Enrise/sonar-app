@@ -14,7 +14,7 @@ function banner {
 }
 
 function task:init {
-    cp -u .env.example .env
+    cp .env.example .env
     touch database/database.sqlite
     php artisan key:generate
     php artisan migrate
