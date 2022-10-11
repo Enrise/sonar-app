@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+function banner {
+  echo ""
+  echo "███████╗ ██████╗ ███╗   ██╗ █████╗ ██████╗ "
+  echo "██╔════╝██╔═══██╗████╗  ██║██╔══██╗██╔══██╗"
+  echo "███████╗██║   ██║██╔██╗ ██║███████║██████╔╝"
+  echo "╚════██║██║   ██║██║╚██╗██║██╔══██║██╔══██╗"
+  echo "███████║╚██████╔╝██║ ╚████║██║  ██║██║  ██║"
+  echo "╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝"
+  echo ""
+}
+
+function task:init {
+    cp -u .env.example .env
+    touch database/database.sqlite
+    php artisan migrate
+}
+
+function task:start {
+    php artisan serve
+}
+
+function task:help { ## Prints this index
+    echo "$0 <task> <args>"
+    echo "Tasks:"
+    cat $0 | awk 'match($0, /^function[ ]+task:([a-zA-Z0-9_:-]*)([ ]+\{[ ]*##(.*))*/, a) {printf "  \033[33m%-15s\033[0m  %s\n", a[1], a[3]}'
+}
+
+banner
+"task:${@:-help}"
