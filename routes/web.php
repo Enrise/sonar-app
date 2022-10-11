@@ -15,3 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', TestController::class);
+
+Route::get('/', function () {
+    return view('welcome');
+});

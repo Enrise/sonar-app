@@ -1,7 +1,11 @@
 <?php
 
+use App\Models\User;
+use App\Notifications\FailIt;
+use App\Notifications\ShipIt;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +21,19 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('user', function () {
+   User::factory()->create();
+})->purpose('Shipping time!');
+
+Artisan::command('shipit', function () {
+    $user = User::first();
+
+    $user->notify(new ShipIt());
+})->purpose('Shipping time!');
+
+Artisan::command('failit', function () {
+    $user = User::first();
+
+    $user->notify(new FailIt());
+})->purpose('Whoops!');
