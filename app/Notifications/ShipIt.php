@@ -4,11 +4,12 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ShipIt extends Notification
+class ShipIt extends Notification implements ShouldQueue
 {
+    use Queueable;
+
     /**
      * Get the notification's delivery channels.
      *
