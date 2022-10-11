@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Notifications\FailIt;
 use App\Notifications\ShipIt;
+use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Notification;
@@ -21,6 +22,10 @@ use Illuminate\Support\Facades\Notification;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+Artisan::command('fail', function () {
+    $this->output->writeln("Something went wrong!");
+    return Command::FAILURE;
+})->purpose('Just fail');
 
 Artisan::command('user', function () {
    User::factory()->create();

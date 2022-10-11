@@ -1,5 +1,6 @@
 <?php
 
+use Enrise\LaravelSonar\Infrastructure\ServiceProviders\LaravelSonarServiceProvider;
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -185,6 +186,7 @@ return [
         /*
          * Package Service Providers...
          */
+        LaravelSonarServiceProvider::class,
 
         /*
          * Application Service Providers...

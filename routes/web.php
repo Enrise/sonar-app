@@ -16,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/sonar', DashboardAction::class);
-Route::post('/transactions/resolve', TransactionResolveAction::class);
+Route::prefix('/sonar')->group(function() {
+    Route::get('/', \Enrise\LaravelSonar\Infrastructure\Actions\DashboardAction::class);
+    Route::post('/transactions/resolve', \Enrise\LaravelSonar\Infrastructure\Actions\TransactionResolveAction::class);
+});
