@@ -24,16 +24,21 @@ Artisan::command('inspire', function () {
 
 Artisan::command('user', function () {
    User::factory()->create();
+    $this->comment('Done!');
 })->purpose('Shipping time!');
 
 Artisan::command('shipit', function () {
     $user = User::first();
 
     $user->notify(new ShipIt());
+
+    $this->comment('Done!');
 })->purpose('Shipping time!');
 
 Artisan::command('failit', function () {
     $user = User::first();
 
     $user->notify(new FailIt());
+
+    $this->comment('Done!');
 })->purpose('Whoops!');
